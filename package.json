@@ -1,0 +1,48 @@
+{
+  "name": "react-spa",
+  "version": "1.0.0",
+  "description": "react app + redux + blueprintjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floydezus/react-spa.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "alexander tokarev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/floydezus/react-spa/issues"
+  },
+  "homepage": "https://github.com/floydezus/react-spa#readme",
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ]
+  },
+  "dependencies": {
+    "@blueprintjs/core": "^3.51.2",
+    "@popperjs/core": "^2.10.2",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "unique-names-generator": "^4.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.4.0",
+    "html-webpack-plugin": "^5.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  }
+}
