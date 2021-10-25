@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { HTMLTable, InputGroup, Spinner, Button, Navbar } from "@blueprintjs/core";
-import { uniqueId } from 'lodash';
-import { uniqueNamesGenerator, countries } from 'unique-names-generator';
+import { connect } from 'react-redux';
+import * as actions from '../actions/index.js';
+
+const mapStateToProps = (state) => {
+  const { data } = state;
+  const props = {
+    data
+  };
+  return props;
+};
+
+const actionCreators = {
+  addData: actions.addData,
+};
 
 const buttonAddStyle = {
   // backgroundColor: "#39c",
@@ -14,29 +26,27 @@ const inputStyle = {
   borderRadius: "0px",
 }
 
-const MyTable = () => {
 
-  const config = {
-    dictionaries: [countries]
-  };
+const MyTable = ({
+  addData,
+  data
+}) => {
+
+ 
 
   const [status, setStatus] = useState('idle');
-  const [data, setData] = useState(null);
   const [searchString, setSearchString] = useState('');
 
   useEffect(() => {
-    const arrayCountries = [...new Array(10)].map(() => ({  id: uniqueId(), text: uniqueNamesGenerator(config) }));
-    setData(arrayCountries);
     setStatus('working');
-
     return () => {
-      setstatus('idle');
+      setStatus('idle');
     };
   }, []);
 
   const handlerAddData = () => {
-    const newData = { id: uniqueId(), text: uniqueNamesGenerator(config) };
-    setData([...data, newData]);
+    console.log('handlerAddData');
+    addData();
   }
 
   const handleChangeText = ({target}) => {
@@ -80,7 +90,6 @@ const MyTable = () => {
             </HTMLTable>
         </div>
       </div>
-    
     )
       
   };
@@ -98,4 +107,5 @@ const MyTable = () => {
     return renderContent();
   }
 };
-export default MyTable;
+
+export default connect(mapStateToProps, actionCreators)(MyTable);

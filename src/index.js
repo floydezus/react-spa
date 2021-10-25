@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import MyTable from './components/MyTable.js';
+import { render } from 'react-dom';
+import App from './components/App.js';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers/index.js';
+
 import '../src/css/normalize.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '../src/css/main.css';
 
-ReactDOM.render(<MyTable />, document.querySelector('#app'));
+const store = createStore(
+    reducers,
+);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('#app')
+);
